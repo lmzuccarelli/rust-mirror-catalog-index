@@ -695,7 +695,7 @@ dependencies = [
 
 [[package]]
 name = "mirror-catalog-index"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "custom-logger",
  "flate2",
@@ -723,8 +723,8 @@ dependencies = [
 
 [[package]]
 name = "mirror-copy"
-version = "0.1.0"
-source = "git+https://github.com/lmzuccarelli/rust-mirror-copy?branch=main#fce2c103ec1130335d9306917edd9c4029f6f2b1"
+version = "0.1.2"
+source = "git+https://github.com/lmzuccarelli/rust-mirror-copy?branch=main#52cca399485c49841a3792425a3b9fb7a6fa43ef"
 dependencies = [
  "async-trait",
  "base64",
