@@ -1,0 +1,25 @@
+[package]
+name = "mirror-catalog-index"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+flate2 = "1.0.25"
+tar = "0.4.38"
+serde = "1.0.196"
+serde_derive = "1.0.196"
+serde_json = "1.0.113"
+custom-logger = { git = "https://github.com/lmzuccarelli/rust-custom-logger", branch = "main" }
+mirror-copy = { git = "https://github.com/lmzuccarelli/rust-mirror-copy", branch = "main" }
+mirror-config = { git = "https://github.com/lmzuccarelli/rust-mirror-config", branch = "main" }
+
+[lib]
+name = "mirror_catalog_index"
+path = "src/lib.rs"
+
+[dev-dependencies]
+serial_test = "2.0.0"
+tokio-test = "0.4.3" 
+mockito = "1.2.0"
