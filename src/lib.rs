@@ -67,16 +67,28 @@ pub async fn untar_layers(
             let tar_gz = File::open(file.clone()).expect("could not open file");
             let tar = GzDecoder::new(tar_gz);
             let mut archive = Archive::new(tar);
-            // should always be a sha256 string
-            log.info(&format!("untarring file {} ", &blob[..6]));
-            // we are really interested in either the configs or release-images directories
-            match archive.unpack(cache_file) {
-                Ok(arch) => arch,
-                Err(error) => {
-                    let msg = format!("skipping this error : {} ", &error.to_string());
-                    log.warn(&msg);
+            let entries = archive.entries();
+            for entry in entries.unwrap() {
+                let ent = entry.unwrap();
+                let path = ent.path().unwrap();
+                let path_str = path.to_str().unwrap();
+                // we are really interested in either the configs or release-images directories
+                if path_str.contains("configs/") || path_str.contains("release-images/") {
+                    // should always be a sha256 string
+                    log.info(&format!("untarring file {} ", &blob[..6]));
+                    let this_tar_gz = File::open(file.clone()).expect("could not open file");
+                    let this_tar = GzDecoder::new(this_tar_gz);
+                    let mut this_archive = Archive::new(this_tar);
+                    match this_archive.unpack(cache_file.clone()) {
+                        Ok(arch) => arch,
+                        Err(error) => {
+                            let msg = format!("skipping this error : {} ", &error.to_string());
+                            log.warn(&msg);
+                        }
+                    };
+                    break;
                 }
-            };
+            }
         } else {
             log.info(&format!("cache exists {}", cache_file));
         }
@@ -231,15 +243,9 @@ mod tests {
         };
         let mut vec_layers = vec![];
         let fslayer = FsLayer {
-            blob_sum: String::from("sha256:a48865"),
-            original_ref: Some(String::from("test-a4")),
+            blob_sum: String::from("sha256:ac202b"),
+            original_ref: Some(String::from("test-ac")),
             size: Some(112),
-        };
-        vec_layers.insert(0, fslayer);
-        let fslayer = FsLayer {
-            blob_sum: String::from("sha256:b4385e"),
-            original_ref: Some(String::from("test-b4")),
-            size: Some(113),
         };
         vec_layers.insert(0, fslayer);
         aw!(untar_layers(
