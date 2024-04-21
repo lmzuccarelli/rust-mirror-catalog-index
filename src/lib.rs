@@ -72,8 +72,8 @@ pub async fn untar_layers(
                 let ent = entry.unwrap();
                 let path = ent.path().unwrap();
                 let path_str = path.to_str().unwrap();
-                // we are really interested in either the configs or release-images directories
-                if path_str.contains("configs/") || path_str.contains("release-images/") {
+                // we are really interested in either the configs or release-manifests directories
+                if path_str.contains("configs/") || path_str.contains("release-manifests/") {
                     // should always be a sha256 string
                     log.info(&format!("untarring file {} ", &blob[..6]));
                     let this_tar_gz = File::open(file.clone()).expect("could not open file");
