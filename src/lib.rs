@@ -121,12 +121,16 @@ pub fn parse_image_index(log: &Logging, operators: Vec<Operator>) -> Vec<ImageRe
 }
 
 // get_cache_dir
-pub fn get_cache_dir(dir: String, name: String, version: String) -> String {
+pub fn get_cache_dir(dir: String, name: String, version: String, arch: Option<String>) -> String {
     let mut file = dir.clone();
     file.push_str(&name);
     file.push_str(&"/");
     file.push_str(&version);
     file.push_str(&"/");
+    if arch.is_some() {
+        file.push_str(&arch.unwrap());
+        file.push_str(&"/");
+    }
     file.push_str(&"cache");
     file
 }
@@ -186,12 +190,21 @@ pub fn get_image_manifest_url(image_ref: ImageReference) -> String {
 }
 
 // utility functions - get_manifest_json
-pub fn get_manifest_json_file(dir: String, name: String, version: String) -> String {
+pub fn get_manifest_json_file(
+    dir: String,
+    name: String,
+    version: String,
+    arch: Option<String>,
+) -> String {
     let mut file = dir.clone();
     file.push_str(&name);
     file.push_str(&"/");
     file.push_str(&version);
     file.push_str(&"/");
+    if arch.is_some() {
+        file.push_str(&arch.unwrap());
+        file.push_str(&"/");
+    }
     file.push_str(&"manifest.json");
     file
 }
@@ -217,6 +230,7 @@ mod tests {
             String::from("./test-artifacts"),
             String::from("/operator"),
             String::from("v1"),
+            None,
         );
         assert_eq!(res, String::from("./test-artifacts/operator/v1/cache"));
     }
@@ -300,7 +314,7 @@ mod tests {
         let dir = String::from("./test-artifacts");
         let name = String::from("/index-manifest");
         let version = String::from("v1");
-        let res = get_manifest_json_file(dir, name, version);
+        let res = get_manifest_json_file(dir, name, version, None);
         assert_eq!(
             res,
             String::from("./test-artifacts/index-manifest/v1/manifest.json")
