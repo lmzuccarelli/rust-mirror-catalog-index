@@ -724,7 +724,6 @@ dependencies = [
 [[package]]
 name = "mirror-copy"
 version = "0.2.0"
-source = "git+https://github.com/lmzuccarelli/rust-mirror-copy?branch=main#9fc7574107f91b79ed73c131b19797c1ebd97dc6"
 dependencies = [
  "async-trait",
  "base64",
