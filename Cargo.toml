@@ -13,7 +13,7 @@ serde_derive = "1.0.196"
 serde_json = "1.0.113"
 custom-logger = { git = "https://github.com/lmzuccarelli/rust-custom-logger", branch = "main" }
 mirror-copy = { git = "https://github.com/lmzuccarelli/rust-mirror-copy", branch = "main", version = "0.3.0" }
-mirror-config = { git = "https://github.com/lmzuccarelli/rust-mirror-config", branch = "main" version = "0.2.0" }
+mirror-config = { git = "https://github.com/lmzuccarelli/rust-mirror-config", branch = "main", version = "0.2.0" }
 
 [lib]
 name = "mirror_catalog_index"
