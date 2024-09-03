@@ -700,7 +700,7 @@ dependencies = [
  "custom-logger",
  "flate2",
  "mirror-config",
- "mirror-copy",
+ "mirror-utils",
  "mockito",
  "serde",
  "serde_derive",
@@ -724,6 +724,7 @@ dependencies = [
 [[package]]
 name = "mirror-copy"
 version = "0.6.0"
+source = "git+https://github.com/lmzuccarelli/rust-mirror-copy?branch=main#6809a4321143e1c4e8e0b31947de9f416b0e6fb3"
 dependencies = [
  "async-trait",
  "base64",
@@ -747,6 +748,20 @@ dependencies = [
 name = "mirror-error"
 version = "0.1.0"
 source = "git+https://github.com/lmzuccarelli/rust-mirror-error?branch=main#9d9c5dd348f3ab9168d20e266c5ec3b07f7f3851"
+
+[[package]]
+name = "mirror-utils"
+version = "0.1.0"
+source = "git+https://github.com/lmzuccarelli/rust-mirror-utils?branch=main#e9234cca2b52efa062bf32a992558b2dd62498fe"
+dependencies = [
+ "custom-logger",
+ "mirror-copy",
+ "mirror-error",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "sha256",
+]
 
 [[package]]
 name = "mockito"
