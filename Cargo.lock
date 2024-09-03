@@ -388,17 +388,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a44623e20b9681a318efdd71c299b6b222ed6f231972bfe2f224ebad6311f0c1"
 
 [[package]]
-name = "futures-macro"
-version = "0.3.30"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "87750cf4b7a4c0625b1529e4c543c2182106e4dedc60a2a6455e00d212c489ac"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
 name = "futures-sink"
 version = "0.3.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -419,7 +408,6 @@ dependencies = [
  "futures-channel",
  "futures-core",
  "futures-io",
- "futures-macro",
  "futures-sink",
  "futures-task",
  "memchr",
@@ -695,7 +683,7 @@ dependencies = [
 
 [[package]]
 name = "mirror-catalog-index"
-version = "0.4.0"
+version = "0.5.0"
 dependencies = [
  "custom-logger",
  "flate2",
@@ -723,14 +711,13 @@ dependencies = [
 
 [[package]]
 name = "mirror-copy"
-version = "0.6.0"
-source = "git+https://github.com/lmzuccarelli/rust-mirror-copy?branch=main#6809a4321143e1c4e8e0b31947de9f416b0e6fb3"
+version = "0.7.0"
+source = "git+https://github.com/lmzuccarelli/rust-mirror-copy?branch=main#b1e83aa298c32f22484bf8a5b87b3b1b5fe2cd00"
 dependencies = [
  "async-trait",
  "base64",
  "custom-logger",
  "flate2",
- "futures",
  "hex",
  "mirror-error",
  "reqwest",
@@ -751,8 +738,8 @@ source = "git+https://github.com/lmzuccarelli/rust-mirror-error?branch=main#9d9c
 
 [[package]]
 name = "mirror-utils"
-version = "0.1.0"
-source = "git+https://github.com/lmzuccarelli/rust-mirror-utils?branch=main#e9234cca2b52efa062bf32a992558b2dd62498fe"
+version = "0.2.0"
+source = "git+https://github.com/lmzuccarelli/rust-mirror-utils?branch=main#48e742b84f79066ad2004676a844b12b0fe27a5a"
 dependencies = [
  "custom-logger",
  "mirror-copy",
