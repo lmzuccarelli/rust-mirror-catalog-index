@@ -1,6 +1,6 @@
 [package]
 name = "mirror-catalog-index"
-version = "0.6.0"
+version = "0.6.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -12,7 +12,7 @@ serde = "1.0.196"
 serde_derive = "1.0.196"
 serde_json = "1.0.113"
 custom-logger = { git = "https://github.com/lmzuccarelli/rust-custom-logger", branch = "main" }
-mirror-utils = { git = "https://github.com/lmzuccarelli/rust-mirror-utils", branch = "main", version = "0.3.0" }
+mirror-utils = { git = "https://github.com/lmzuccarelli/rust-mirror-utils", branch = "main", version = "0.3.1" }
 mirror-config = { git = "https://github.com/lmzuccarelli/rust-mirror-config", branch = "main", version = "0.2.0" }
 
 [lib]
